@@ -1,0 +1,147 @@
+/*----------------------------------------
+  31. Maps
+----------------------------------------*/
+
+.jvectormap-zoomin,
+.jvectormap-zoomout {
+	width: 25px;
+    height: 25px;
+    line-height: 1.5;
+    color: $default-text-color;
+    background:  $default-white;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+
+    &:hover {
+    	background: $gradient-success;
+    	color: $default-white;
+    }
+}
+
+.jvectormap-zoomout {
+	top: 50px;
+}
+
+.map-100 {
+    height: 100px;
+
+    .jvectormap-container {
+        min-height: 100px;
+
+        @include screen-mobile {
+            min-height: 100px;
+        } 
+    }
+}
+
+.map-200 {
+    height: 200px;
+
+    .jvectormap-container {
+        min-height: 200px;
+
+        @include screen-mobile {
+            min-height: 200px;
+        } 
+    }
+}
+
+.map-300 {
+    height: 300px;
+
+    .jvectormap-container {
+        min-height: 300px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-400 {
+    height: 400px;
+
+    .jvectormap-container {
+        min-height: 400px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-500 {
+    height: 500px;
+
+    .jvectormap-container {
+        min-height: 500px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-600 {
+    height: 600px;
+
+    .jvectormap-container {
+        min-height: 600px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-700 {
+    height: 700px;
+
+    .jvectormap-container {
+        min-height: 700px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-800 {
+    height: 800px;
+
+    .jvectormap-container {
+        min-height: 800px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-900 {
+    height: 900px;
+
+    .jvectormap-container {
+        min-height: 900px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.map-1000 {
+    height: 1000px;
+
+    .jvectormap-container {
+        min-height: 1000px;
+
+        @include screen-mobile {
+            min-height: 250px;
+        } 
+    }
+}
+
+.jvectormap-container {
+    padding: 20px 0px;
+}

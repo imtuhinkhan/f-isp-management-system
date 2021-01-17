@@ -1,0 +1,246 @@
+
+//--------------------------------------------------
+// [Responsive]
+//--------------------------------------------------
+
+// usage : @include screen-desktop {...} 
+@mixin screen-desktop {
+    @media only screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
+// usage : @include screen-laptop-above {...} 
+@mixin screen-laptop-above {
+    @media only screen and (min-width: 1440px) {
+        @content;
+    }
+}
+
+// usage : @include screen-laptop {...} 
+@mixin screen-laptop {
+    @media only screen and (max-width: 1440px) {
+        @content;
+    }
+}
+
+// usage : @include screen-laptop-only {...} 
+@mixin screen-laptop-only {
+    @media only screen and (min-width: 992px) and (max-width: 1440px)  {
+        @content;
+    }
+}
+
+// usage : @include screen-tablet-above {...} 
+@mixin screen-tablet-above {
+    @media only screen and (min-width: 992px) {
+        @content;
+    }
+}
+
+// usage : @include screen-tablet {...} 
+@mixin screen-tablet {
+    @media only screen and (max-width: 992px) {
+        @content;
+    }
+}
+
+// usage : @include screen-mobile-above {...} 
+@mixin screen-mobile-above {
+    @media only screen and (min-width: 767px) {
+        @content;
+    }
+}
+
+// usage : @include screen-mobile {...} 
+@mixin screen-mobile {
+    @media only screen and (max-width: 767px) {
+        @content;
+    }
+}
+
+// usage : @include print {...} 
+@mixin print {
+    @media print {
+        @content;
+    }
+}
+
+//--------------------------------------------------
+// [Transform]
+//--------------------------------------------------
+
+// usage : @include transform(translateX(-50%) translateY(-50%));
+@mixin transform($transforms) {
+    transform: $transforms;
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+}
+
+//--------------------------------------------------
+// [Transform Origin]
+//--------------------------------------------------
+
+// eg: @include transform-origin(left center); 
+@mixin transform-origin($val) {
+    -webkit-transform-origin: $val;
+    -moz-transform-origin: $val;
+    -ms-transform-origin: $val;
+    transform-origin: $val;
+}
+
+//--------------------------------------------------
+// [Transition]
+//--------------------------------------------------
+
+// eg: @include transition(all 0.4s ease-in-out); 
+@mixin transition($transition) {
+    transition: $transition;
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -ms-transition: $transition;
+}
+
+//--------------------------------------------------
+// [Box Shadow]
+//--------------------------------------------------
+
+// usage: @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.075), inset); 
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
+
+
+//--------------------------------------------------
+// [Text Masking]
+//--------------------------------------------------
+
+// usage : @include gradient-text-masking;
+@mixin gradient-text-masking {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+//--------------------------------------------------
+// [Clearfix]
+//--------------------------------------------------
+@mixin clearfix {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+//--------------------------------------------------
+// [Background Color Opacity]
+//--------------------------------------------------
+
+// usage : @include background-opacity($default-dark, 0.5); 
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+
+//--------------------------------------------------
+// [Color Alpha]
+//--------------------------------------------------
+
+//usasge: @include alpha-attribute('color', rgba(black, 0.5), white);
+@mixin alpha-attribute($attribute, $color, $background) {
+    $percent: alpha($color) * 100%;
+    $opaque: opacify($color, 1);
+    $solid-color: mix($opaque, $background, $percent);
+    #{$attribute}: $solid-color;
+    #{$attribute}: $color;
+}
+  
+//--------------------------------------------------
+// [Animation & Keyframe]
+//--------------------------------------------------  
+
+// usage: @include keyframes(spin) {0% { transform: rotate(0); } 100% { transform: rotate(360deg); }}   
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+// usage: @include animation('spin 1.2s backwards infinite') 
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};      
+} 
+
+
+//--------------------------------------------------
+// [Placeholder]
+//--------------------------------------------------
+
+// usage: @include placeholder {font-size: 10px;} 
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content};
+    &:-moz-placeholder           {@content};
+    &::-moz-placeholder          {@content};
+    &:-ms-input-placeholder      {@content};
+}
+
+
+//--------------------------------------------------
+// [RGBA Background Opacity]
+//--------------------------------------------------
+
+// usage: @include bg-opacity($color-dark, .2); 
+@mixin bg-opacity($color, $opacity: 0.3) {
+    background: rgba($color, $opacity);
+}
+
+
+//--------------------------------------------------
+// [Grayscale]
+//--------------------------------------------------
+
+// usage: @include grayscale(100%); 
+@mixin grayscale($gray) {
+    -webkit-filter: grayscale($gray);
+    -moz-filter: grayscale($gray);
+    filter: grayscale($gray);
+}
+
+
+//--------------------------------------------------
+// [Blur]
+//--------------------------------------------------
+
+// usage: @include blur(5px); 
+@mixin blur($gray) {
+    -webkit-filter: blur($gray);
+    -moz-filter: blur($gray);
+    filter: blur($gray);
+}

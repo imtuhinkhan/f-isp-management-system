@@ -1,0 +1,49 @@
+.toast {
+    border: 1px solid $toast-border;
+    background-color: $white;
+    max-width: $toast-max-width;
+    box-shadow: $toast-box-shadow;
+
+    .close {
+        margin-bottom: 0px;
+    }
+}
+
+.notification-toast {
+    position: fixed;
+    max-width:  $toast-max-width;
+    z-index: $zindex-popover;
+
+    &.top-right {
+        top: calc(#{$header-height} + #{$toast-placement-gutter}) ;
+        right: $toast-placement-gutter;
+    }
+
+    &.top-left {
+        top: calc(#{$header-height} + #{$toast-placement-gutter}) ;
+        left: $toast-placement-gutter;
+    }
+
+    &.top-middle {
+        top: calc(#{$header-height} + #{$toast-placement-gutter}) ;
+        left: 50%;
+        @include transform(translateX(-50%));
+    }
+
+    &.bottom-right {
+        bottom: $toast-placement-gutter ;
+        right: $toast-placement-gutter;
+    }
+
+    &.bottom-left {
+        bottom: $toast-placement-gutter ;
+        left: $toast-placement-gutter;
+    }
+
+    &.bottom-middle {
+        bottom: $toast-placement-gutter ;
+        left: 50%;
+        @include transform(translateX(-50%));
+    }
+
+}

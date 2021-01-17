@@ -1,0 +1,52 @@
+ul {
+    padding-left: 0px;
+
+    &.icons-list {
+        margin: 10px 0;
+        list-style: none;
+        overflow: hidden;
+
+        li {
+            float: left;
+            width: 16.66%;
+            text-align: center;
+            list-style: none;
+            cursor: pointer;
+            height: 100px;
+            color: $body-color;
+            @include transition(color 0.3s ease-in-out); 
+            position: relative;
+            margin: 15px 0;
+            border-radius: $border-radius;
+            overflow: hidden;
+            padding: 10px 0 0;
+
+            @include screen-tablet {
+                width: 33.33%;
+            } 
+
+            @include screen-mobile {
+                width: 50%;
+            } 
+            
+            .icon-wrap {
+                font-size: 24px;
+                @include transition(transform 0.3s ease-in-out); 
+            }
+
+            .icon-text {
+                display: block;
+                margin-top: 10px;
+            }
+
+            &:hover {
+                color: $brand-primary;
+                background-color: rgba($brand-primary, 0.1);
+
+                i {
+                    @include transform(scale(1.4));
+                }
+            }
+        }
+    }
+}

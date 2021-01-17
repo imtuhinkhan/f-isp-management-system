@@ -1,0 +1,20 @@
+.progress {
+	height: $progress-bar-height;
+	background-color: $progress-bar-bg;
+	border-radius: 50px;
+	margin-bottom: 20px;
+	min-width: 50px;
+
+	&.progress-sm {
+		height: $progress-bar-height-sm;
+	}
+}
+
+.progress-bar {
+	background-color: $progress-bar-theme;
+
+	&:last-child {
+		border-top-right-radius: 50px;
+		border-bottom-right-radius: 50px;
+	}
+}

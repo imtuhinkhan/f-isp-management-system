@@ -1,0 +1,63 @@
+.page-link {
+	border: 1px solid transparent;
+	border-radius: $border-radius-circle;
+	padding: 0;
+	min-width: 2rem;
+	line-height: 2rem;
+    height: 2rem;
+	margin: 0px 5px;
+	color: $body-color;
+	background-color: transparent;
+	text-align: center;
+	@include transition(all 0.3s ease-in-out); 
+
+	&:hover {
+		color: $brand-primary;
+		text-decoration: none;
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+	&:focus {
+		box-shadow: none;
+	}
+}
+
+.page-item {
+
+	&.disabled {
+		.page-link {
+			color: lighten($body-color, 25%);
+			border-color: transparent;
+		}
+	}
+
+	&.active {
+		.page-link {
+			background: $brand-primary;
+			border-color: transparent;
+		}
+	}
+}
+
+.pagination {
+
+	.page-item {
+		&.active {
+			.page-link {
+				background: $brand-primary;
+				border-color: transparent;
+
+				&:hover {
+					color: $white;
+				}
+			}
+		}
+
+		.page-link {
+			&:hover {
+				color: $brand-primary;
+			}
+		}
+	}	
+}

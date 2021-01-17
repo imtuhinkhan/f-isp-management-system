@@ -1,0 +1,115 @@
+.avatar {
+    font-size: $font-size-base;
+    text-align: center;
+    background: $avatar-bg;
+    color: $white;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    width: $avatar-size;
+    height: $avatar-size;
+    line-height: $avatar-size;
+    border-radius: 50%;
+    display: inline-block;
+
+    &.avatar-icon {
+        font-size: $avatar-icon;
+    }
+
+    > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    &.avatar-badge {
+        overflow: visible;
+        position: relative;
+
+        &.avatar-square {
+
+            .badge {
+                top: -3px;
+                right: -3px;
+            }
+        }
+
+        .badge {
+            border: 1px solid $white;
+            position: absolute;
+            top: 0px;
+            right: 0;
+
+            &.badge-danger {
+                background-color: #f5222d;
+            }
+
+            &:not(:empty) {
+                top: -7px;
+                right: -7px;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                font-weight: $font-weight-normal
+            }
+        }
+    }
+    
+}
+
+.avatar-lg {
+    width: $avatar-size-lg;
+    height: $avatar-size-lg;
+    line-height: $avatar-size-lg;
+
+    > * {
+        line-height: $avatar-size-lg;
+    }    
+
+    &.avatar-icon {
+        font-size: $avatar-icon-lg;
+    }
+}
+
+.avatar-sm {
+    width: $avatar-size-sm;
+    height: $avatar-size-sm;
+    line-height: $avatar-size-sm;
+
+    > * {
+        line-height: $avatar-size-sm;
+    }    
+
+    &.avatar-icon {
+        font-size: $avatar-icon-sm;
+    }
+}
+
+.avatar-square {
+    border-radius: $border-radius;
+}
+
+@each $tone in $tone-loop {
+
+    .avatar-#{nth($tone, 1)} {
+        color: #{nth($tone, 2)};
+        background: #{nth($tone, 3)};
+    }
+}    
+
+.avatar-text {
+
+    .avatar {
+        margin-left: -5px;
+        border: 2px solid $white;
+    }
+} 
+
+.avatar-string {
+
+    .avatar {
+        margin-left: -8px;
+        border: 2px solid $white;
+    }
+}

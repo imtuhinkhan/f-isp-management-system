@@ -1,0 +1,39 @@
+.alert {
+    padding: $alert-padding-y $alert-padding-x;
+    border-radius: $alert-border-radius;
+
+    p {
+        color: $body-color;
+        margin-bottom: 0px; 
+    }
+}
+
+.alert-default {
+    border-color: $border-color;
+}
+
+@each $alert in $alert-loop {
+
+    .#{nth($alert, 1)} {
+        background-color: #{nth($alert, 2)};
+        border: 1px solid #{nth($alert, 4)};
+        color: $alert-text-color;
+
+        .alert-icon {
+            color: #{nth($alert, 3)};
+        }
+
+        hr {
+            border-top-color: #{nth($alert, 4)};
+        }
+    }
+}   
+
+.alert-icon {
+    margin-right: 10px;
+}
+
+
+
+
+

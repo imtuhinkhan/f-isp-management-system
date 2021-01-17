@@ -1,0 +1,42 @@
+.was-validated {
+    .form-control {
+
+        &:valid {
+            border-color: $state-success-text;
+            background-image: $state-valid-icon;
+        }
+
+        &:invalid {
+            border-color: $state-danger-text;
+            background-image: $state-invalid-icon;
+        }
+    }
+}
+
+.form-control {
+
+    &.is-valid {
+        border-color: $state-success-text;
+        background-image: $state-valid-icon;
+    }
+
+    &.is-invalid {
+        border-color: $state-danger-text;
+        background-image: $state-invalid-icon;
+    }
+}
+
+.valid-feedback {
+    color: $state-success-text;
+}
+
+.invalid-feedback {
+    color: $state-danger-text;
+}
+
+div {
+
+    &.is-invalid {
+        color: $state-danger-text;
+    }
+}

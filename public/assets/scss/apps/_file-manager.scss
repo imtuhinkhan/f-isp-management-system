@@ -1,0 +1,275 @@
+$file-manager-content-height        : $content-height;
+$file-manager-nav-weight            : 250px;
+$file-manager-content-header        : 65px;
+$file-manager-content-details-width : 320px;
+
+.file-manager-wrapper {
+    background: $white;
+    border: 1px solid $border-color;
+    height: calc(100vh - #{$file-manager-content-height});
+    position: relative;
+    overflow: hidden;
+
+    .file-manager-nav {
+        border-right: 1px solid $border-color;
+        height: calc(100vh - #{$file-manager-content-height});
+        width: $file-manager-nav-weight;
+        display: inline-block;
+        background-color:  $white;
+
+        @include screen-tablet {
+            position: absolute;
+            left: -$file-manager-nav-weight;
+            z-index: 1;
+            width: $file-manager-nav-weight;
+            top: $file-manager-content-header;
+            height: calc(100%  - #{$file-manager-content-header});
+            @include transition(all 0.3s ease);
+        } 
+
+        &.nav-open {
+            left: 0px;
+            box-shadow: 8px 10px 40px rgba(18, 38, 63, 0.05)
+        }
+    }
+
+    .file-manager-content {
+        position: relative;
+        width: calc(100% - #{$file-manager-nav-weight});
+        height: calc(100vh - #{$file-manager-content-height});
+        float: right;
+
+        @include screen-tablet {
+            width: 100%
+        }
+
+        .file-manager-content-header {
+            height: $file-manager-content-header;
+            border-bottom: 1px solid $border-color;
+            padding: 0px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .file-manager-search {
+                height: 100%;
+                font-size: 18px; 
+
+                .toggle-icon {
+                    margin-right: 15px;
+
+                    @include screen-tablet-above {
+                        display: none;
+                    }
+
+                    @include screen-tablet {
+                        line-height: $file-manager-content-header;
+                    }
+                }
+
+                .search-icon {
+                    margin-right: 10px;
+
+                    @include screen-tablet-above {
+                        color: $input-color-placeholder;
+                    }   
+                    
+                    @include screen-tablet {
+                        line-height: $file-manager-content-header;
+                    }
+                }
+
+                > input {
+                    border: 0px;
+                    color: $gray-dark;
+                    line-height: $file-manager-content-header;
+                    background-color: transparent;
+                    width: 70%;
+
+                    @include screen-tablet {
+                        display: none;
+                    }    
+
+                    &:focus {
+                        outline: transparent;
+                    }
+
+                    @include placeholder {
+						color: $input-color-placeholder;
+					}
+                }
+            }
+
+            .file-manager-tools {
+                font-size: 18px;
+
+                .ant-upload {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .file-manager-content-body {
+            height: calc(100vh - #{$file-manager-content-height} - #{$file-manager-content-header});
+            display: flex;
+
+            @include screen-tablet {
+                overflow: hidden;
+                position: relative;
+            }
+
+            .file-manager-content-files {
+                position: relative;
+                height: 100%;
+                width: calc(100% - #{$file-manager-content-details-width});
+                padding: 25px;
+                overflow-y: auto;
+
+                @include screen-tablet {
+                    width: 100%;
+                }    
+
+                .unselect-bg {
+                    background-color: transparent;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                }
+                
+                .file-wrapper {
+                    position: relative;
+                    display: grid;
+                    grid-gap: 0;
+                    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+
+                    .file {
+                        display: flex;
+                        flex: 1 1 220px;
+                        cursor: pointer;
+                        @include transition(all 0.3s ease);
+
+                        &:hover,
+                        &:focus,
+                        &:active,
+                        &.active {
+                            border-color: transparent;
+                            box-shadow: 0px 7px 25px rgba(18,38,63,.1)
+                        }
+
+                        &:focus,
+                        &.active {
+                            background-color: #f9fbfd; 
+                        }    
+
+                        &.vertical {
+                            align-items: center;
+                            justify-content: center;
+                            flex-direction: column;
+                            text-align: center;
+
+                            img {
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                    &.list-view {
+                        display: block;
+
+                        .file {
+                            border: 0px;
+                            margin-bottom: 0px;
+                            border-bottom: 1px solid $border-color;
+
+                            &.vertical {
+                                justify-content: flex-start;
+                                flex-direction: row;
+                                text-align: left;
+
+                                > div {
+                                    &:first-child {
+                                        margin-right: 10px;
+                                        font-size: 30px !important;
+                                    }
+                                }
+                            } 
+                            
+                            &:hover,
+                            &:focus,
+                            &:active,
+                            &.active {
+                                background-color: #f9fbfd; 
+                                border-bottom: 1px solid $border-color;
+                                box-shadow: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .file-manager-content-details {
+                height: 100%;
+                width: $file-manager-content-details-width;
+                border-left: 1px solid $border-color;
+                overflow-y: auto;
+                background-color: $white;
+                @include transition (all 0.3s ease);
+
+                @include screen-tablet {
+                    position: absolute;
+                    width: 100%;
+                    right: -100%;
+
+                    &.details-open {
+                        right: 0px;
+                    }
+                }
+
+                .content-details-close {
+                    float: right;
+                    
+                    @include screen-tablet-above {
+                        display: none;
+                    }
+                }
+
+                .content-details-file {
+                    height: 150px;
+                }
+                
+                .content-details-no-data {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                }
+                
+                .ant-tabs-nav {
+                    display: flex;
+
+                    > div {
+                        display: flex;
+                        width: 100%;
+                    }
+
+                    .ant-tabs-tab {
+                        flex: 1 1 auto;
+                        text-align: center;
+                    }    
+                }
+            }
+        }
+    }
+}
+
+.file {
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    padding: 10px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+}

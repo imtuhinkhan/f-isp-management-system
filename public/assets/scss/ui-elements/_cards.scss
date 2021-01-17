@@ -1,0 +1,220 @@
+.card {
+	position: relative;
+	background-color: $white;
+	margin-bottom: $card-margin-bottom;
+	border: 1px solid $card-border-color;
+	border-radius: $card-border-radius;
+	@include transition(all 0.3s ease-in-out); 
+}
+
+.card-header {
+	padding: 0px $card-spacer-x;
+	position: relative;
+	background-color: transparent;
+	border-bottom: 1px solid $card-border-color;
+	min-height: $card-head-min-height;
+	
+	.card-title {
+		flex: 1;
+		padding: 16px 0;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		margin-bottom: 0px;
+	}
+
+	p {
+		padding-top: 8px;
+		margin-bottom: 0px;
+	}
+
+	&:first-child {
+		border-radius: 0px;
+	}
+
+	&.has-toolbar {
+		display: flex;
+		align-items: center;
+	}
+}
+
+.card-title {
+	font-weight: $font-weight-semibold;
+	font-size: 16px;
+	color: $gray-dark;
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+
+.card-body {
+	padding: $card-spacer-x;
+	position: relative;
+}
+
+.card-footer {
+	position: relative;
+	padding: 10px $card-spacer-x;
+	min-height: 55px;
+	border-top: 1px solid $border-color;
+	background-color: transparent;
+	
+	.btn {
+		margin-bottom: 0px;
+	}
+
+	&:last-child {
+		border-bottom-left-radius: $card-border-radius;
+		border-bottom-right-radius: $card-border-radius;
+	}
+}
+
+.card-toolbar {
+	
+	ul {
+		list-style: none;
+		padding-left: 0px;
+		display: flex;
+
+		> li {
+			
+			> * {
+				margin-bottom: 0px;
+				margin-right: 15px; 
+				display: block;
+			}
+
+			> .btn {
+				padding: 7px 15px;
+				font-size: 13px;
+			}
+
+			&:last-child {
+				> * {
+					margin-right: 0px;
+				}
+			}
+		}
+	}
+}
+
+.bg-overlay {
+	
+	> .card-toolbar {
+		position: absolute;
+		right: 15px;
+		top: 15px;
+	}
+}
+
+.card-img-top {
+	border-top-left-radius: $card-border-radius;; 
+    border-top-right-radius: $card-border-radius;; 
+}
+
+.card-refresh {
+
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100%;
+		height: 100%;
+		z-index: 4;
+		@include background-opacity($white, 0.7); 
+	}
+
+	&:after {
+		content:"";
+		position: absolute;
+		top: calc(50% - 20px);
+		left: calc(50% - 20px);
+		border: 3px solid $border-color; 
+	    border-top: 3px solid $brand-primary; 
+	    border-radius: 50%;
+	    width: 40px;
+	    height: 40px;
+	    z-index:  5;		
+	    @include animation('spin 1.2s linear infinite') ;
+	    @include transform(translateX(-50%) translateY(-50%));
+	}
+}
+
+.draggable-item {
+	cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+@include keyframes(spin) {0% { transform: rotate(0); } 100% { transform: rotate(360deg); }} 
+
+a {
+	&.card {
+		display: block;
+
+		&:hover,
+		&:focus {
+			@include box-shadow(0, 7px, 15px, rgba(0, 0, 0, 0.075)); 
+		}
+	}
+}
+
+.bg-overlay {
+	position: relative;
+	overflow: hidden;	
+	color: darken($white, 5%);
+	
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: $white;
+	}
+	
+	p {
+		color: darken($white, 5%);
+	}
+	
+	&:before {
+		content:"";
+		position: absolute;
+		background: #515156;
+		opacity: 0.5;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		z-index: 2
+	}
+
+	> div {
+		z-index: 3;
+	}
+
+	.btn-default {
+		color: $white;
+
+		&:hover,
+		&:focus {
+			color: $gray-dark;
+		}
+	}
+
+	&.primary {
+		&:before {
+			background: $brand-primary;
+			opacity: 0.6;
+		}	
+	}
+}
+
+.card-collapse-btn {
+	@include transition(all 0.4s ease-in-out); 
+
+	&.active {
+		@include transform(rotate(180deg));
+	}
+}

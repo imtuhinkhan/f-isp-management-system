@@ -1,0 +1,86 @@
+.accordion {
+
+	>.card {
+		margin-bottom: 0px;
+
+		> .card-header {
+			padding: 0px;
+
+			>.card-title {
+				padding: 0px;
+
+				> a{
+					padding: 15px 25px;
+					display: block;
+					color: $collapse-title-color;
+					background-color: $collapse-bg;
+					font-size: $collapse-title-font-size;
+					font-weight: $font-weight-base;
+					
+					&:not(.collapsed) {
+						&:after {
+							@include transform(rotate(90deg));
+						}
+					}
+
+					&:after {
+						content: "\e0ad";
+						font-family: "anticon";
+						float: left;
+						margin-right: 10px;
+						@include transition(all 0.3s ease-in-out); 
+					}
+				}
+			}
+		}
+
+		.card-body {
+			padding-top: $collapse-content-spacing;
+		}
+	}
+
+	&.nested {
+		>.card {
+			margin-bottom: 0px;
+			border-bottom: 0px;
+
+			&:last-child {
+				border-bottom: 1px solid $border-color;
+			}
+		}	
+	}
+
+	&.borderless {
+		>.card {
+			margin-bottom: 0px;
+			border-top: 0px;
+			border-left: 0px;
+			border-right: 0px;
+			border-bottom: 1px solid $border-color;
+			
+			&:not(:first-of-type):not(:last-of-type) {
+				border-bottom: 1px solid $border-color;
+			}
+
+			> .card-header {
+				margin-bottom: 0px;
+				border-bottom: 0px;
+
+				>.card-title {
+	
+					> a{
+						background-color: transparent;
+					}
+				}
+			}
+
+			.card-body {
+				padding-top: 0px;
+			}
+
+			&:last-child {
+				border-bottom: 0px;
+			}
+		}	
+	}
+}

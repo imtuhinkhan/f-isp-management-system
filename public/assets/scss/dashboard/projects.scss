@@ -1,0 +1,31 @@
+.completion-chart {
+    @include screen-mobile-above {
+        height: 335px;
+        width:calc(100% - 300px)
+    }
+}
+
+.calendar-card {
+    .datepicker {
+        border: 0px;
+        padding: 0px;
+
+        @include screen-mobile {
+            margin-left: auto; 
+            margin-right: auto; 
+            margin-top: 20px;
+        }
+
+        table tr th,
+        table tr td {
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+.team-member {
+    height: 35px;
+    width: 35px;
+}
+

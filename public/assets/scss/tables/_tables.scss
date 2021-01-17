@@ -1,0 +1,96 @@
+.table>tbody>tr>td,
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+	border-color: $table-border-color;
+	padding: $table-cell-padding;
+}
+
+.table-sm>tbody>tr>td,
+.table-sm>tbody>tr>th, 
+.table-sm>tfoot>tr>td, 
+.table-sm>tfoot>tr>th, 
+.table-sm>thead>tr>td, 
+.table-sm>thead>tr>th {
+	padding: $table-sm-cell-padding;
+}
+
+.table {	
+	color: $table-color;
+
+	&:not(.table-bordered) {
+
+		>thead>tr>th {
+			border-top: 0px;
+		}
+	}
+
+	> thead {
+		>tr {
+			> th {
+				color: $table-head-color;
+				border-bottom: 1px solid $table-border-color;
+				font-weight: $font-weight-semibold;
+			}
+		}
+	}
+
+	.thead-dark th {
+		background-color: $gray-dark;
+		border-color: $gray-dark;
+	}
+
+	.thead-light th {
+		background-color: $gray;
+		border-color: $table-border-color;
+		color: $white;
+	}
+
+	th,
+	td {
+		vertical-align: middle;
+	}
+
+	tr {
+		&.selected {
+			background-color: $table-hover;
+		}
+	}
+}
+
+.table-striped{
+	> tbody {
+
+		> tr {
+
+			&:nth-of-type(odd) {
+				background-color: lighten($gray, 0.5%);
+			}
+		}
+	}
+}
+
+.table-hover  {
+	> tbody{
+
+		> tr {
+
+			&:hover {
+				background-color: $table-hover;
+			}
+		}
+	}
+} 
+
+.table-bordered {
+    border: 1px solid $table-border-color;
+}
+
+.table-overflow {
+	@include screen-tablet {
+		width: 100%;
+		overflow-x: auto;
+	}
+}

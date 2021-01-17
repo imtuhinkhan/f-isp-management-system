@@ -1,0 +1,40 @@
+.breadcrumb {
+	padding: 0px;
+    margin-bottom: 0px;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0px;
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    font-weight: 500;
+
+    a {
+        &.breadcrumb-item {
+            color: $gray-light;
+
+
+            &:hover,
+            &:focus {
+                color: $brand-primary;
+            }
+        }
+    }
+
+    &.breadcrumb-dash {
+
+        .breadcrumb-item {
+            + .breadcrumb-item {
+                &:before {
+                    content: ">";
+                }
+            }
+        }
+    }
+
+    .breadcrumb-item {
+        &.active {
+            color: $gray;
+        }
+    }
+}

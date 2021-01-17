@@ -1,0 +1,30 @@
+.product-info-table {
+
+    width: 100%;
+
+    tr {
+       &:not(:last-child) {
+            border-bottom: 1px solid $border-color;
+        }
+
+        td {
+            padding: 15px;
+
+            &:first-child {
+
+                @include screen-mobile-above {
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
+
+.badge {
+
+    &.product-color {
+        height: 15px;
+        width: 15px;
+    }
+}
+

@@ -1,0 +1,175 @@
+$mail-content-height        : $content-height - 2px;
+$mail-nav-width             : 250px;
+$mail-list-sender-width     : 220px;
+$mail-list-date-width       : 100px;
+
+
+.mail-wrapper {
+    position: relative;
+    border: 1px solid $border-color;
+    background-color: $white;
+    display: flex;
+    min-height: calc(100vh - #{$mail-content-height});
+
+    @include screen-tablet {
+        height: calc(100vh - #{$mail-content-height});
+        overflow: hidden;
+    }
+
+    .mail-nav {
+        width: $mail-nav-width;
+        border-right: 1px solid $border-color;
+        display: inline-block;
+        background-color: $white;
+        @include transition(all 0.3s ease);
+
+        @include screen-mobile {
+            position: absolute;
+            height: 100%;
+            left: -$mail-nav-width;
+            z-index: $zindex-fixed;
+
+            &.nav-open {
+                left: 0px;
+                box-shadow: 8px 10px 40px rgba(18, 38, 63, 0.05)
+            }
+        }
+    }
+
+    .mail-content {
+        position: relative;
+        width: calc(100% - #{$mail-nav-width});
+        float: right;
+        padding: 0px 15px;
+
+        @include screen-tablet-above {
+            padding: 25px;
+        }
+
+        @include screen-tablet {
+            height: calc(100vh - #{$mail-content-height});
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        @include screen-mobile{
+            width: 100%;
+        }
+
+        .mail-list {
+            padding: 0px 10px;
+            border-bottom: 1px solid $border-color;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            
+            .checkbox {
+                label {
+                    margin-bottom: 0px;
+                }
+            }
+
+            @include screen-tablet {
+                align-items: flex-start;
+                padding: 15px 0px;
+            }    
+
+            &:last-child {
+                border-bottom: 0px;
+            }
+
+            &:hover {
+                background-color: #f9fbfd;
+            }
+
+            .list-info {
+                width: 100%;
+                margin-bottom: 0px;
+
+                td,
+                th {
+                    border-top: 0px;
+                }
+
+                @include screen-tablet {
+                    display: block;
+                    position: relative;
+                }
+
+                .list-sender {
+                    
+                    @include screen-tablet-above {
+                        width: $mail-list-sender-width;
+                        padding: 15px 0px;
+                    }
+
+                    @include screen-tablet {
+                        padding: 0px;
+                        display: block;
+                    }
+                }
+
+                .list-content {
+
+                    @include screen-tablet-above {
+                        max-width: 0px;
+                    }   
+
+                    @include screen-tablet {
+                        display: block;
+                    }
+
+                    .list-msg {
+
+                        @include screen-tablet-above {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                        }
+
+                        .list-title {
+                            color: $gray-dark;
+                            font-weight: $font-weight-semibold;
+
+                            @include screen-tablet {
+                                display: block;
+                                margin-top: 10px;
+                                margin-bottom: 5px;
+                                font-weight: normal;
+                            }
+                        }
+                    
+                        .list-text {
+                            @include screen-tablet {
+                                width: 350px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                                display: block;
+                                font-size: 13px;
+                            }
+
+                            @include screen-mobile {
+                                width: 230px;
+                            }    
+                        }
+                    }
+                }
+
+                .list-date {
+
+                    @include screen-tablet-above {
+                        width: $mail-list-date-width;
+                        text-align: right;
+                    }
+
+                    @include screen-tablet {
+                        position: absolute;
+                        top: 0px;
+                        right: 0px;;
+                    }
+                }
+            }
+        }
+    }
+}

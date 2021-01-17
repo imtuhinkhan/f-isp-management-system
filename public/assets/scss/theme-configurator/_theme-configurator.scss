@@ -1,0 +1,74 @@
+.theme-configurator {
+
+    .radio {
+        padding: 0px;
+    }
+
+    .radio input[type=radio] {
+
+        +label {
+            &:before {
+                border-radius: 4px;
+                background-color: transparent;
+            }
+        }
+        
+        &:checked+label:after {
+            content: "\38";
+            font-family: "anticon";
+            color: $white;
+            background-color: transparent;
+            left: 3px;
+            top: 1px;
+        }
+
+        &#header-default {
+            +label {
+                &:before {
+                    background-color: $white;
+                    border-color: $border-color;
+                }
+            }
+
+            &:checked+label:after {
+                color: $gray-dark;
+            }    
+        }
+
+        &#header-primary {
+            +label {
+                &:before {
+                    background-color: $brand-primary;
+                    border-color: $brand-primary;
+                }
+            }
+        }
+
+        &#header-success {
+            +label {
+                &:before {
+                    background-color: $brand-success;
+                    border-color: $brand-success;
+                }
+            }
+        }
+
+        &#header-secondary {
+            +label {
+                &:before {
+                    background-color: $brand-secondary;
+                    border-color: $brand-secondary;
+                }
+            }
+        }
+
+        &#header-danger {
+            +label {
+                &:before {
+                    background-color: $brand-danger;
+                    border-color: $brand-danger;
+                }
+            }
+        }
+    }
+}

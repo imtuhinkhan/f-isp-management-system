@@ -1,0 +1,75 @@
+.badge {
+    line-height: $badge-line-height;
+    padding: $badge-spacer;
+
+    &.badge-indicator {
+        border-radius: $border-radius-circle;
+        display: inline-block;
+        padding: 0;
+        width: 10px;
+        height: 10px;
+
+        &:empty {
+            display: inline-block;
+        }
+    }
+
+    &.badge-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50px;
+        padding: 0px;
+
+        &:empty {
+            display: inline-block;
+        }
+    }
+}
+
+.badge-default {
+    border: 1px solid $border-color;
+    background-color: $white;
+    color: $gray-dark;
+    font-weight: $font-weight-semibold;
+}
+
+@each $badge in $contextual-loop {
+    .#{nth($badge, 5)} {
+        background-color: #{nth($badge, 1)};
+        color: $white;
+    }
+}
+
+@each $badge in $contextual-loop {
+    a {
+        &.#{nth($badge, 5)} {
+
+            &:hover,
+            &:focus {
+                background-color: darken(nth($badge, 1),5%);
+                box-shadow: none;
+                color: $white;
+            }
+        }
+    }
+}
+
+@each $badge-tone in $tone-loop {
+
+    .badge-#{nth($badge-tone, 1)} {
+        color: #{nth($badge-tone, 2)};
+        background: #{nth($badge-tone, 3)};
+        border-color: transparent;
+        font-weight: 500;
+    }
+
+    a {
+        &.badge-#{nth($badge-tone, 1)} {
+            &:hover,
+            &:focus {
+                background-color: #{nth($badge-tone, 2)};
+                color: $white;
+            }
+        }
+    }
+}    

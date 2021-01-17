@@ -1,0 +1,93 @@
+.noUi-handle {
+	background-color: $white;
+	border-radius: 50%;
+	box-shadow: none;
+	cursor: pointer;
+	@include transition(all 0.2s ease); 
+
+	&:active {
+	    @include transform(scale(1.4));
+	}
+
+    &:before,
+    &:after {
+    	display: none;	
+    }
+}
+
+.noUi-horizontal {
+	height: 6px;
+
+	.noUi-handle {
+	    left: -10px;
+	    top: -7px;
+	    width: 18px;
+		height: 18px;
+		border: 1px solid darken($border-color, 5%);
+	}
+}	
+
+
+.noUi-vertical {
+	height: 100%;
+	width: 6px;
+	display: inline-block;
+
+	.noUi-handle {
+		width: 18px;
+		height: 18px;
+		border: 1px solid darken($border-color, 5%);
+	}
+
+	.noUi-origin {
+	    border-radius: 0px;
+	    bottom: 0px;
+	}
+}
+
+.noUi-background {
+    background: $progress-bar-bg;
+    box-shadow: none;
+}
+
+.noUi-origin {
+    border-radius: 0px;
+    bottom: 5px;
+}
+
+.noUi-target {
+	border: 1px solid $border-color;
+	box-shadow: none;
+	background-color: #ececec;
+
+	&.noUi-connect {
+		box-shadow: none;
+	}
+}
+
+.noUi-connect {
+	background-color: $brand-primary;	
+}
+
+.noUi-marker-large,
+.noUi-marker-sub  {
+	background: $border-color;
+ }
+
+.noUi-pips {
+	color: $gray-light;	
+}
+
+.noUi-value-sub {
+	color: $gray-light;	
+	margin-top: 5px;
+	font-size: 11px
+}
+
+.noUi-value {
+	margin-top: 5px;
+    font-size: 12px;
+}
+.noUi-marker-horizontal.noUi-marker-large {
+	height: 10px;
+}

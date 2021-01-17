@@ -1,0 +1,46 @@
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: $list-spacer-y $list-spacer-x;
+    margin-bottom: -1px;
+    background-color: $white;
+    border: 1px solid $list-border-color;
+
+    &.active {
+        color: $brand-primary;
+        background-color: rgba($brand-primary, 0.1);
+        border-color: rgba($brand-primary, 0.1);
+
+        h1, h2 ,h3 ,h4 ,h5 ,h6 ,p {
+            color: $brand-primary;
+        }
+    }
+
+    &.disabled,
+    &:disabled {
+        color: rgba($body-color, 0.35);
+        pointer-events: none;
+        background-color: $white;
+
+        h1, h2 ,h3 ,h4 ,h5 ,h6 ,p {
+            color: rgba($body-color, 0.35);
+        }
+    }
+}
+
+.list-group-item-action {
+
+    &:not(.active) {
+        &:hover,
+        &:focus {
+            color: $gray-dark;
+            background-color: $select-hover-color;
+        }
+
+        &:active {
+            background-color: darken($select-hover-color, 5%);
+        }
+    }
+
+    
+}

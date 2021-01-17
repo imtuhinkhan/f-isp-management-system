@@ -1,0 +1,49 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.0.0",
+        "@tailwindcss/postcss7-compat": "^2.0.2",
+        "autoprefixer": "^9.8.6",
+        "axios": "^0.19.2",
+        "bootstrap": "^4.0.0",
+        "cross-env": "^7.0",
+        "jquery": "^3.2",
+        "laravel-mix": "^5.0.1",
+        "lodash": "^4.17.19",
+        "popper.js": "^1.12",
+        "postcss": "^7.0.35",
+        "react": "^16.2.0",
+        "react-dom": "^16.2.0",
+        "resolve-url-loader": "^3.1.0",
+        "sass": "^1.15.2",
+        "sass-loader": "^8.0.2",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
+    },
+    "dependencies": {
+        "@react-pdf/renderer": "^1.6.12",
+        "chart.js": "^2.9.4",
+        "downloadjs": "^1.4.7",
+        "js-cookie": "^2.2.1",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "react-chartjs-2": "^2.11.1",
+        "react-data-table-component": "^6.11.6",
+        "react-data-table-component-extensions": "^1.5.0",
+        "react-pdf": "^5.1.0",
+        "react-redux": "^7.2.2",
+        "react-router-dom": "^5.2.0",
+        "react-select": "^3.1.1",
+        "redux-thunk": "^2.3.0",
+        "styled-components": "^5.2.1",
+        "sweetalert2": "^10.13.0"
+    }
+}

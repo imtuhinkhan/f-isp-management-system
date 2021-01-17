@@ -1,0 +1,158 @@
+.form-control {
+	padding: $input-padding-y $input-padding-x;
+	height: auto;
+	color: $input-color;
+	border: 1px solid $input-border-color;
+	font-size: $font-size-base;
+	line-height: $input-line-height;
+
+	@include placeholder {
+		color: $input-color-placeholder
+	}
+
+	&:not([disabled]) {
+
+		&:hover,
+		&:focus {
+			border-color: $input-border-focus;
+		}
+
+		&:focus {
+			box-shadow: $input-box-shadow-focus;
+		}
+	}
+
+	&[disabled] {
+		cursor: not-allowed;
+		background-color: $input-bg-disabled;
+	}
+}
+
+.form-control-sm {
+    height: auto;
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    font-size: $input-font-size-sm;
+    line-height: $input-line-height-sm;
+}
+
+.form-control-lg {
+    height: auto;
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    font-size: $input-font-size-lg;
+    line-height: $input-line-height-lg;
+}
+
+.input-group-sm {
+
+	>.form-control,
+	>.custom-select, 
+	>.input-group-prepend>.input-group-text, 
+	>.input-group-append>.input-group-text, 
+	>.input-group-prepend>.btn, 
+	>.input-group-append>.btn {
+		padding:  $input-padding-y-sm $input-padding-x-sm;
+		font-size: $input-font-size-sm;
+		line-height: $input-line-height-sm;
+	}
+
+	.form-control:not(textarea), 
+	.custom-select {
+		height: auto;
+	}
+}
+
+.input-group-lg {
+
+	>.form-control,
+	>.custom-select, 
+	>.input-group-prepend>.input-group-text, 
+	>.input-group-append>.input-group-text, 
+	>.input-group-prepend>.btn, 
+	>.input-group-append>.btn {
+		padding: $input-padding-y-lg $input-padding-x-lg;
+		font-size: $input-font-size-lg;
+		line-height: $input-line-height-lg;
+	}
+
+	.form-control:not(textarea), 
+	.custom-select {
+		height: auto;
+	}
+}
+
+.input-group-text {
+	font-size: $font-size-base;
+	border: 1px solid $input-border-color;
+	background-color: $gray-lightest;
+	color: $body-color;
+}
+
+.input-affix {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	width: 100%;
+
+	.prefix-icon,
+	.suffix-icon {
+		position: absolute;
+		top: 50%;
+		z-index: $zindex-default;
+		line-height: $line-height-base;
+		
+		@include transform(translateY(-50%));
+	}
+
+	.prefix-icon {
+		left: 12px;
+	}
+
+	.suffix-icon {
+		right: 12px;
+	}
+
+	.form-control {
+
+		&:not(:first-child) {
+			padding-left: 35px;
+		}
+
+		&:not(:last-child) {
+			padding-right: 35px;
+		}
+	}
+}
+
+.custom-file {
+	height: $input-height;
+}
+
+.custom-file-input {
+	height: $input-height;
+
+	&:focus {
+		~ .custom-file-label {
+			border-color: $input-border-focus;
+			box-shadow: $input-box-shadow-focus;
+		}
+	}
+}
+
+.custom-file-label {
+	border: 1px solid $input-border-color;
+	height: $input-height;
+	line-height: $input-height;
+	padding: 0px;
+	padding-left: $input-padding-x;
+
+	&:after {
+		height: calc(#{$input-height} - 2px);
+		line-height: $input-height;
+		padding: 0px $input-padding-x;
+		background-color: $gray-lightest;
+	}
+}
+
+.form-group {
+	margin-bottom: 24px;
+}

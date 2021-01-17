@@ -1,0 +1,295 @@
+$chat-height-offset: $header-height + $layout-content-gutter + $layout-content-gutter + $footer-height;
+$chat-height-offset-sm: $header-height + $layout-content-gutter-sm + $layout-content-gutter-sm + $footer-height;
+$chat-header-height: 75px;
+$chat-footer-height: 75px;
+$chat-list-width: 380px;
+
+#chat {
+	height: 100%;
+}
+
+.chat {
+
+	.conversation {
+
+		.conversation-wrapper {
+			position: relative;
+			height: 100%;
+			
+			.conversation-header {
+				position: relative;
+                height: $chat-header-height;
+                display: flex;
+                align-items: center;
+				padding: 0px 25px;
+				border-bottom: 1px solid $border-color;
+				
+				.back {
+					position: absolute;
+					line-height: $chat-header-height;
+					left: 15px;
+					top: 2px;
+					font-size: 18px;
+					color: $gray-light;
+					
+					&:hover,
+					&:focus {
+						text-decoration: none;
+						color: $gray-dark;
+					}
+				}
+				
+				.recipient {
+					display: inline-block;
+					font-size: 16px;
+				}
+
+				.tools {
+					float: right;
+					padding-left: 0;
+					list-style: none;
+					font-size: 20px;
+
+					li {
+						display: inline-block;
+					}
+				}
+			}
+			
+			.conversation-body {
+				padding: 15px 25px;
+				position: relative;
+				width: 100%;
+				
+				.msg {
+                    display: flex;
+					margin-bottom: 15px;
+
+					.bubble {
+						max-width: 75%;
+						position: relative;
+
+						.bubble-wrapper {
+							padding: 10px 15px;
+							border-radius: 4px;
+							overflow: hidden;
+                            border-radius: 10px;
+                            margin-bottom: 10px;
+						}
+					}
+
+					&.datetime {
+						padding: 15px 0;
+						margin-bottom: 0px;
+						font-size: 11px;
+						font-weight: 500;
+                        justify-content: center
+					}
+
+					&.msg-recipient {
+
+						.bubble {
+
+							.bubble-wrapper {
+								background-color: rgba($brand-primary, 0.1);
+								color: $brand-primary;
+
+								img {
+									max-width: 250px;
+									cursor: pointer;
+								}
+							}
+						}
+					}
+					
+					&.msg-sent {
+                        justify-content: flex-end;
+
+						.bubble {
+
+							.bubble-wrapper {
+								background: $gray-lighter;
+								color: $gray;
+							}
+						}
+					}
+				}
+			}
+			
+			.conversation-footer {
+				position: relative;
+				background-color: $white;
+				border-top: 1px solid $border-color;
+                height: 100%;
+                
+				.upload-btn,
+				.sent-btn  {
+					border: 0px;
+					background-color: transparent;
+					color: lighten($gray-light,20%);
+					outline: none;
+					font-size: 18px;
+					position: absolute;
+					top: 12px;
+					left: 10px;
+					@include transition(all 0.2s ease-out);
+					
+					&:hover,
+					&:focus {
+						color: $gray-dark;
+					}
+				}
+				
+				.sent-btn {
+					left: auto;
+					right: 20px;
+					font-size: 18px;
+					top: 13px;
+				}
+			}
+		}
+	}
+
+	&.chat-app {
+		border: 1px solid $border-color;
+		padding: 0px;
+		margin: 0px;
+
+		@include screen-mobile {
+			border: 0px;
+		}	
+
+		.chat-list {
+			width: $chat-list-width;
+			border-right: 1px solid $border-color;
+			float: left;
+			background-color: $white;
+			
+			@include screen-mobile {
+				width: 100%;
+				border-right: 0px;
+				border: 1px solid $border-color;
+			}	
+
+			.chat-user-list {
+				overflow: auto;
+				position: relative;
+				height: calc(100vh - #{$chat-header-height} - #{$chat-height-offset} - 2px);
+
+				@include screen-mobile {
+					height: calc(100vh - #{$chat-header-height} - #{$chat-height-offset});
+				}	
+				
+				.chat-list-item {
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    display: block;
+                    @include transition(all 0.3s ease-in-out); 
+                    
+                &:not(:last-child) {
+                    border-bottom: 1px solid $border-color;
+                }
+
+					&:hover,
+					&.active {
+						background-color: #fafbfe;
+					}
+				}
+                
+                .msg-overflow {
+                    width: calc(#{$chat-list-width} - 120px);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+					white-space: nowrap;
+					
+					@include screen-mobile {
+						width: 200px;
+					}	
+                }
+			}
+
+			.chat-user-tool {
+				padding: 0px 25px;
+				height: $chat-header-height;
+				border-bottom: 1px solid $border-color;
+
+				> input {
+					border: 0px;
+					color: $gray-dark;
+					line-height: $chat-header-height;
+					background-color: transparent;
+					font-size: 18px;
+                    width: 70%;
+                    
+                    &:focus {
+                        outline: transparent;
+                    }
+
+					@include placeholder {
+						color: $input-color-placeholder;
+					}
+				}
+
+				.search-icon {
+					color: $input-color-placeholder;
+				}
+			}
+		}
+
+		.chat-content {
+			float: left;
+			width: calc(100% - #{$chat-list-width});
+			position: relative;
+			padding: 0px;
+			background-color: $white;
+			@include transition(all 0.3s ease-in-out); 
+
+			@include screen-mobile {
+				width: calc(100% - #{$layout-content-gutter-sm} - #{$layout-content-gutter-sm});
+				position: fixed;
+				left: -100%;
+				border: 1px solid $border-color;
+
+				&.open {
+					left: $layout-content-gutter-sm;
+				}
+			}	
+
+			.conversation {
+				height: 100%;
+			}
+
+			.conversation-body {
+                height: calc(100vh - #{$header-height} - #{$chat-height-offset-sm} - #{$header-height} - 30px);
+				overflow-y: auto;
+			}
+
+			.conversation-footer {
+				position: absolute;
+                height: $chat-footer-height;
+                padding: 0px 25px;
+                display: flex;
+                justify-content: space-between;
+				width: 100%;
+                bottom:  0px;
+				
+				@include screen-mobile {
+					bottom:  -$chat-footer-height;
+				}	
+				
+                .chat-input {
+					border: 0px;
+					line-height: $chat-footer-height;
+					outline: 0;
+                    width: 100%;
+                    max-width: 600px;
+
+					@include placeholder {
+						color: $input-color-placeholder;
+					} 
+				}
+			}
+		}
+	}
+}
+

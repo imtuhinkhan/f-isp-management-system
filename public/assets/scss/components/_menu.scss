@@ -1,0 +1,55 @@
+.menu {
+
+
+    &.nav {
+        
+        .nav-item {
+            line-height: 45px;
+            height: 45px;
+            margin-bottom: 8px;
+
+            .nav-link {
+                display: block;
+                position: relative;
+                padding: 0px 25px;
+                color: $gray-dark;
+                font-weight: $font-weight-semibold;
+                @include transition( color .3s ease);
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-right: 3px solid $brand-primary;
+                    @include transform(scaleY(.0001));
+                    @include transition(transform 0.15s ease);
+                    opacity: 0;
+                }
+
+                &:hover,
+                &:focus {
+                    color: $brand-primary;
+                }
+
+                &:active,
+                &.active {
+                    color: $brand-primary;
+                    background-color: rgba($brand-primary, 0.1);
+                }
+
+                &.active {
+                    &:after {
+                        transform: scaleY(1);
+                        opacity: 1;
+                    }
+                }
+
+                > i {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

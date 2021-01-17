@@ -1,0 +1,168 @@
+.modal {
+	.modal-dialog {
+		@include transition(all 0.2s ease-out); 
+	}
+
+	&.modal-right {
+		padding-right: 0px !important;
+
+		.modal-dialog {
+			@include transform(translateX(100%));	
+		}
+		
+		&.show {
+			.modal-dialog {
+				@include transform(translateX(0%));
+			}
+			
+		}
+	}
+	
+	&.modal-left {
+		padding-right: 0px !important;
+
+		.modal-dialog {
+			@include transform(translateX(-100%));	
+		}
+		
+		&.show {
+			.modal-dialog {
+				@include transform(translateX(0%));
+			}
+			
+		}
+	}
+	
+	&.modal-fs {
+		padding-right: 0px !important;
+
+		.modal-dialog {
+			@include transform(scale(0.7));
+		}
+		
+		&.show {
+			.modal-dialog {
+				@include transform(scale(1));
+			}
+		}
+	}
+}
+
+.modal-header {
+	padding: $modal-header-padding;
+	border-bottom: 1px solid $border-color;
+	
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: 0px;
+	}
+}
+
+.modal-body {
+	padding: $modal-body-padding;
+}
+
+.modal-footer {
+	padding: $modal-footer-padding;
+	border-top: 1px solid $border-color;
+	text-align: left;
+	
+	.btn {
+		margin-bottom: 0px;
+		
+		+.btn {
+			margin-left: 0px;
+		}
+	}
+}
+
+.modal-content {
+    position: relative;
+    background-color: $modal-content-bg;
+    border: 0px;
+    border-radius: $modal-border-radius;
+	outline: 0;
+	box-shadow: $modal-content-shadow;
+}
+
+.modal-right,
+.modal-left {
+
+	.modal-dialog {
+		width: $side-modal-width;
+		height: 100%;
+		margin: 0px auto 0px 0px ;
+		
+		@include screen-mobile {
+			width: calc(100% - 50px);
+		} 
+		
+		.modal-content {
+			height: 100%;
+			border-radius: 0px;
+			
+			.side-modal-wrapper {
+				height: 100%;
+				position: relative;
+			}
+			
+			.modal-footer {
+				position: absolute;
+				bottom: 0px;
+				width: 100%;
+			}
+		}
+	}
+}
+
+.modal-right {
+	.modal-dialog {
+		margin: 0px 0px 0px auto;
+	}
+}
+
+.modal-backdrop {
+	z-index: 1040;
+	background-color: $modal-backdrop-color;
+
+	&.show {
+		opacity: 1;
+	}
+}
+
+.modal-fs {
+	.modal-dialog {
+		width: 100%;
+		margin: 0px auto;
+		height: 100%;
+		max-width: none;
+		
+		.modal-content {
+			height: 100%;
+			border-radius: 0px;
+			@include background-opacity($white, 0.95); 
+		}
+	}
+	
+	.modal-close {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		padding: 7px 10px;
+		border: 1px solid lighten($gray-dark, 30%);
+		border-radius: 50px;
+		color: lighten($gray-dark, 30%);
+		
+		&:hover,
+		&:focus {
+			color: $gray-dark;
+			text-decoration: none;
+			border: 1px solid $gray-dark;
+		} 
+	}
+}
+

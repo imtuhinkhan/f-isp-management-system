@@ -1,0 +1,43 @@
+.custom-select {
+	padding: $input-padding-y $input-padding-x;
+	height: auto;
+	color: $input-color;
+	border: 1px solid $input-border-color;
+	font-size: $font-size-base;
+	line-height: $input-line-height;
+
+	@include placeholder {
+		color: $input-color-placeholder
+	}
+
+	&:not([disabled]) {
+
+		&:hover,
+		&:focus {
+			border-color: $input-border-focus;
+		}
+
+		&:focus {
+			box-shadow: $input-box-shadow-focus;
+		}
+	}
+
+	&[disabled] {
+		cursor: not-allowed;
+		background-color: $input-bg-disabled;
+	}
+}
+
+.custom-select-sm {
+    height: auto;
+    padding: $input-padding-y-sm $input-padding-x-sm;
+    font-size: $input-font-size-sm;
+    line-height: $input-line-height-sm;
+}
+
+.custom-select-lg {
+    height: auto;
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    font-size: $input-font-size-lg;
+    line-height: $input-line-height-lg;
+}
