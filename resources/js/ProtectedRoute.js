@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { Redirect, Route} from "react-router-dom";
 import Cookies from 'js-cookie'
+import {connect} from 'react-redux'
 
-function ProtectedRoute({ component:Component, ...rest }) {
+const ProtectedRoute= ({ component:Component, ...rest })=>{
     const token = Cookies.get('token')
+    console.log({...rest})
     return (
       <Route
         {...rest}
         render={props =>
-          token ? (
+          rest.loggedIn ? (
             <Component {...props}/>
           ) : (
             <Redirect
@@ -22,4 +24,9 @@ function ProtectedRoute({ component:Component, ...rest }) {
       />
     );
   }
-export default ProtectedRoute;
+  const mapStateToProps=state=>{
+    return {
+      loggedIn:state.auth.loggedIn
+    }
+  }
+  export default connect(mapStateToProps)(ProtectedRoute);

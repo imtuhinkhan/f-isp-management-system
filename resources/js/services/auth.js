@@ -2,10 +2,8 @@ import Axios from 'axios'
 import {public_url} from '../config'
 import Cookies from 'js-cookie'
 import { useHistory  } from "react-router-dom";
-export const postLogin=async(data)=>{
-    return await Axios.post(public_url+'api/auth/login',data).then((res)=>{
-        Cookies.set('token', res.data.access_token);
-        Cookies.set('user', res.data.user);
+export const postLogin=(data)=>{
+    return  Axios.post(public_url+'api/auth/login',data).then((res)=>{
         Axios.defaults.headers.common['Authorization'] = 'Bearer '+res.data.access_token;
         return res;
      }).catch(e=>console.log(e));

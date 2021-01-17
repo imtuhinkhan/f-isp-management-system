@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import {postLogin,userAuthenticationCheck} from '../services/auth'
+import {connect} from 'react-redux'
+import Cookies from 'js-cookie'
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props)    
         this.state = {
@@ -23,12 +25,14 @@ export default class Login extends Component {
             email:this.state.email,
             password:this.state.password,
         }
-        const response = await postLogin(postBody);
-        if(response){
+        postLogin(postBody).then((response)=>{
+            console.log(response) 
+            Cookies.set('token', response.data.access_token);
+            this.props.setLogin(response.data.user)
             this.props.history.push('/dashboard')
-        }else{
+        }).catch((e)=>{
             alert('invalid credential')
-        }
+        });
         
     }
     render() {
@@ -104,3 +108,10 @@ export default class Login extends Component {
         )
     }
 }
+
+const mapDispatchToProps=dispatch=>{
+    return {
+        setLogin:(user)=>dispatch({type:"SET_LOGIN",payload:user})
+    }
+}
+export default  connect(null,mapDispatchToProps)(Login);
