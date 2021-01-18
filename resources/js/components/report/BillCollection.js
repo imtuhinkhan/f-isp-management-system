@@ -15,9 +15,9 @@ export default class BillCollection extends Component {
     render() {
         return (
             <>
-            {/* <PDFDownloadLink document={<BillCollectionPDF data={this.state.report} client={this.state.client} monthName={this.state.monthName} yearName={this.state.yearName} />} fileName="bill_collection_report.pdf" style={{float:'right'}}>
+            <PDFDownloadLink document={<BillCollectionPDF data={this.state.report} client={this.state.client} monthName={this.state.monthName} yearName={this.state.yearName} />} fileName="bill_collection_report.pdf" style={{float:'right'}}>
             {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-            </PDFDownloadLink> */}
+            </PDFDownloadLink>
                 <table id="data-table" class="table">
                     <thead>
                         <tr>

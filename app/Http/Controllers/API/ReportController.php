@@ -62,6 +62,18 @@ class ReportController extends Controller
     }
 
     public function billCollection(Request $request){
+        $formData = $request->all();
+        $validator = \Validator::make($formData,[
+            'month' =>'required',
+            'year' =>'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                'success'=>false,
+                'error'=>$validator->getMessageBag()->first()
+            ]);
+        }
         $clientRepo = new ClientRepository();
         $client = $clientRepo->getAll();
         foreach($client as $row=>$val){

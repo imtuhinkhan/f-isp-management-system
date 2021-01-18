@@ -5,6 +5,7 @@ import Footer from '../Footer';
 import { Link } from "react-router-dom";
 import { generateCollectionReport } from '../../services/report'
 import BillCollection from './BillCollection'
+import Swal from 'sweetalert2'
 
 export default class BillCollectionReport extends Component {
     constructor(props) {
@@ -37,7 +38,7 @@ export default class BillCollectionReport extends Component {
         }
         const response = await generateCollectionReport(postBody);
 
-        if(response){
+        if(response.data.success){
             this.setState(
                 {
                     isLoading: false,
@@ -49,6 +50,13 @@ export default class BillCollectionReport extends Component {
 
                 }
             )
+        }else{
+            this.setState({isLoading: false})
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops... Something went wrong!',
+                text: response.data.error,
+              })
         }        
     }
     render() {
@@ -77,7 +85,7 @@ export default class BillCollectionReport extends Component {
                                         <div className="col-sm-4">                                        
                                                 <div className="form-group">
                                                 <label for="year"> Select Client</label>
-                                                <select className='form-control' name="year" onChange={(e)=>this.changeInput(e)}>
+                                                <select className='form-control' name="year" onChange={(e)=>this.changeInput(e)} required>
                                                     <option disabled selected>Select Year</option>
                                                     <option value="2021">2021</option>
                                                     <option value='2022'>2020</option>
@@ -90,7 +98,7 @@ export default class BillCollectionReport extends Component {
                                             <div className="col-sm-4">                                        
                                                 <div className="form-group">
                                                 <label for="month"> Select Month</label>
-                                                <select className='form-control' name="month" onChange={(e)=>this.changeInput(e)}>
+                                                <select className='form-control' name="month" onChange={(e)=>this.changeInput(e)} required>
                                                     <option disabled selected>Select month</option>
                                                     <option value="1">January</option>
                                                     <option value='2'>February</option>

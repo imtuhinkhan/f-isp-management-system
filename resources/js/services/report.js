@@ -9,5 +9,5 @@ export const generateReport=async(data)=>{
 export const generateCollectionReport=async(data)=>{
     return await Axios.post(public_url+'api/billcollection/report',data).then((res)=>{
         return res;
-     }).catch(e=>alert(e.response.error));
+     }).catch(e=>console.log(e));
  }
