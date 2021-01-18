@@ -15,7 +15,6 @@ class BarChart extends Component {
   }
   async setData(){
     const res = await getBarGraphData()
-    console.log(res)
     this.setState({
       labels:res.data.labels,
       datasets:res.data.dataset,
@@ -23,9 +22,6 @@ class BarChart extends Component {
     })
     const labels = this.state.labels;
     const datasets = this.state.datasets;
-    console.log( this.state.labels)
-    console.log( this.state.sl)
-
     this.setState({data:{labels,datasets}})
   }
   componentDidMount(){

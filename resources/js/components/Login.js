@@ -11,6 +11,8 @@ class Login extends Component {
              password:'',
              isLoggedIn: false,
              error:'',
+             isLoading: false,
+
         }
     }
 
@@ -21,17 +23,19 @@ class Login extends Component {
     }
     handleForm = async(e) =>{
         e.preventDefault();
+        this.setState({isLoading:true})
         const  postBody = {
             email:this.state.email,
             password:this.state.password,
         }
         postLogin(postBody).then((response)=>{
-            console.log(response) 
             Cookies.set('token', response.data.access_token);
             this.props.setLogin(response.data.user)
             this.props.history.push('/dashboard')
         }).catch((e)=>{
-            alert('invalid credential')
+            this.setState({
+                error:'Invalid Credential'
+            })
         });
         
     }

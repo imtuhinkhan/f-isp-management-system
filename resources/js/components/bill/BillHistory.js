@@ -55,7 +55,6 @@ export default class BillHistory extends Component {
         this.setState({data: res.data.data,client:res.data.client,sl:0})
         const columns = this.state.columns;
         const data = this.state.data;
-        console.log(this.state.data)
         this.setState({tableData:{columns,data}})
     }
     expenseDelete=(e)=>{

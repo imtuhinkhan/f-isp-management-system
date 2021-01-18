@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux'
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -15,12 +17,8 @@ function Sidebar(props) {
    const signout=async(e)=>{
         e.preventDefault();
         await logout().then(res=>{
-            history.push({
-                pathname:  "/",
-                state: {
-                  response: 'messageFromServer' 
-                } 
-             });
+            props.setLogout()
+            
         }).catch(e=>console.log(e));
     }    
     return (
@@ -150,6 +148,11 @@ function Sidebar(props) {
             </div> 
     );
 }
+const mapDispatchToProps=dispatch=>{
+    return {
+        setLogout:()=>dispatch({type:"SET_LOGOUT"})
+    }
+}
+export default connect(null,mapDispatchToProps)(Sidebar);
 
-export default Sidebar;
 

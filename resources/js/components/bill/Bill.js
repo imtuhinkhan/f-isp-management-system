@@ -33,7 +33,6 @@ export default class Bill extends Component {
     }
     handleChange = client => {
         this.setState({ client });
-        console.log(`Option selected:`, client);
       };
       async submitFrom(e){
         const { history } = this.props;

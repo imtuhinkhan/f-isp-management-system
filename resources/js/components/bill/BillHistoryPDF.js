@@ -74,7 +74,6 @@ class BillHistoryPDF extends Component {
            client:this.props.client,
            report:this.props.data
         }
-        console.log(this.props)
     }
     render() {
         return (

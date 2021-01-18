@@ -7,6 +7,7 @@ import { generateReport } from '../../services/report'
 import ExpenseReport from './ExpenseReport'
 import BillReport from './BillReport'
 import OverallReport from './OverallReport'
+import Swal from 'sweetalert2'
 
 
 export default class ReportIndex extends Component {
@@ -40,9 +41,9 @@ export default class ReportIndex extends Component {
             to_date:this.state.to_date,
         }
         const response = await generateReport(postBody);
+        console.log(response)
 
-        if(response){
-            console.log(response)
+        if(response.data.success){
             this.setState(
                 {
                     isLoading: false,
@@ -52,6 +53,13 @@ export default class ReportIndex extends Component {
 
                 }
             )
+        }else{
+            this.setState({isLoading: false})
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops... Something went wrong!',
+                text: response.data.error,
+              })
         }
 
 
